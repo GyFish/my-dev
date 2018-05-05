@@ -8,9 +8,16 @@
 
 <script>
 import SwaggerUI from 'swagger-ui'
-import 'swagger-ui-themes/themes/3.X/theme-muted.css'
-// import 'element-ui/lib/theme-chalk/index.css'
-
+import 'swagger-ui-themes/themes/3.X/theme-flattop.css'
+/**
+  theme-feeling-blue
+  theme-flattop
+  theme-material
+  theme-monokai
+  theme-muted
+  theme-newspaper
+  theme-outline
+ */
 
 export default {
   name: 'Api-UI',

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import homeImg from '@/assets/my/伊丽莎白和萨达哈鲁.jpg'
+import homeImg from '@/assets/my/wali.jpg'
 
 export default {
   name: 'home',
@@ -22,6 +22,7 @@ export default {
   &-container {
     margin: 30px;
     text-align: center;
+    padding-top: 5%;
   }
 }
 </style>

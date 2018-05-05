@@ -7,7 +7,7 @@ const Controller = require('egg').Controller
 
 class ApiController extends Controller {
 
-    async saveIdx() {
+    async addApi() {
 
         let file = path.join(basePath, 'idx-api.yaml')
         let idx = yaml.safeLoad(fs.readFileSync(file, 'utf8'))
@@ -27,7 +27,7 @@ class ApiController extends Controller {
         this.ctx.body = idx
     }
 
-    async getIdxList() {
+    async getApiList() {
         let basePath = this.app.baseDir + '/app/public/api'
         let file = path.join(basePath, 'idx-api.yaml')
         let idxs = yaml.safeLoad(fs.readFileSync(file, 'utf8'))

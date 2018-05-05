@@ -9,10 +9,12 @@ module.exports = app => {
 
   router.get('/', controller.home.index);
 
+  router.post('/user/login', controller.user.login)
+
   // idx
-  router.get('/api/saveIdx', controller.api.saveIdx)
+  router.post('/api/addApi', controller.api.addApi)
   router.get('/api/getIdx', controller.api.getIdx)
-  router.get('/api/getIdxList', controller.api.getIdxList)
+  router.get('/api/getApiList', controller.api.getApiList)
   router.get('/api/findOne', controller.api.findOne)
   router.get('/api/findAll', controller.api.findAll)
   
