@@ -1,0 +1,40 @@
+swagger: '3.0'
+host: 127.0.0.1
+basePath: /api
+produces:
+  - application/json
+paths:
+  /users:
+    get:
+      summary: 查询所有用户信息
+      description: 查询出所有用户的所有信息，用户名，别名
+      tags:
+        - User
+      responses:
+        '200':
+          description: 所有用户信息或者用户的集合信息
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        default:
+          description: '操作异常,执行失败.返回信息描述错误详情'
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: string
+        description: 用户的唯一id
+      username:
+        type: string
+        description: 用户名
+      alias:
+        type: string
+        description: 别名
+sign: 'geyu 2018-3-29 22:35:47'
