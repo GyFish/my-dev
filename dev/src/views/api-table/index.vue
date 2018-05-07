@@ -1,11 +1,11 @@
 <template>
   <div class="app-container">
-    
+
     <!-- 表格 -->
     <tree-table :data="list">
-      <el-table-column label="id" prop="event"></el-table-column>
-      <el-table-column label="名称" prop="comment"></el-table-column>
-      <el-table-column label="负责人" prop="comment"></el-table-column>
+      <el-table-column label="id" prop="id"></el-table-column>
+      <el-table-column label="名称" prop="name"></el-table-column>
+      <el-table-column label="负责人" prop="owner"></el-table-column>
       <el-table-column width="200" align="right">
         <template slot-scope="scope">
           <el-button 
@@ -36,7 +36,7 @@
       </el-table-column>
     </tree-table>
 
-    <!-- 按钮 -->
+    <!-- 添加按钮 -->
     <div class="bt-add-container">
       <el-button
         icon="el-icon-circle-plus"
@@ -84,8 +84,10 @@ import ApiService from '@/api/api'
 const apiService = new ApiService()
 
 export default {
+
   name: 'Api',
   components: { treeTable },
+  
   data() {
     return {
       dialogVisible: false,
@@ -127,6 +129,7 @@ export default {
     }
     }
   },
+
   methods: {
     message(row) {
       this.$message.info(row.event)
@@ -142,15 +145,15 @@ export default {
         console.log(res)
         this.dialogVisible = false
       })
-    }
+    },
   },
-  mounted() {
+
+  async mounted() {
     console.log('mounted...')
-    console.log(apiService)
-    apiService.getApiLists().then(res => {
-      console.log(res)
-    })
+    let res = await apiService.getApiList()
+    this.list = res.data
   }
+  
 }
 </script>
 

@@ -1,5 +1,8 @@
 swagger: '3.0'
 
+info:
+  description: "users"
+
 host: 127.0.0.1
 basePath: /api
 

@@ -1,8 +1,6 @@
 const fs = require('fs')
 const yaml = require('js-yaml')
-
 const path = require('path')
-
 const Controller = require('egg').Controller
 
 class ApiController extends Controller {
@@ -21,6 +19,7 @@ class ApiController extends Controller {
     }
 
     async getIdx() {
+
         let basePath = this.app.baseDir + '/app/public/api'
         let file = path.join(basePath, 'idx-api.yaml')
         let idx = yaml.safeLoad(fs.readFileSync(file, 'utf8'))
@@ -28,24 +27,13 @@ class ApiController extends Controller {
     }
 
     async getApiList() {
-        let basePath = this.app.baseDir + '/app/public/api'
-        let file = path.join(basePath, 'idx-api.yaml')
-        let idxs = yaml.safeLoad(fs.readFileSync(file, 'utf8'))
-        console.log(idxs)
 
-        let idxList = []
-        for (const idx of idxs) {
-            idxList.push({
-                index: idx.index,
-                name: idx.name
-            })
-            if (idx.sub)
-                for (const subIdx of idx.sub) {
-                    idxList.push(subIdx)
-                }
-        }
-        
-        this.ctx.body = idxList
+        let basePath = this.app.baseDir + '/app/public/api'
+        let file = path.join(basePath, 'apiList.yaml')
+        let apis = yaml.safeLoad(fs.readFileSync(file, 'utf8'))
+        console.log(apis)
+
+        this.ctx.body = apis
     }
 
     async findOne() {

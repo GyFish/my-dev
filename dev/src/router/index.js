@@ -47,7 +47,14 @@ export const constantRouterMap = [
         name: 'Api-UI',
         component: () => import('@/views/api-ui/index'),
         meta: { title: 'ui', icon: 'star' }
-      }
+      },
+      {
+        hidden: false,
+        path: 'editor',
+        name: 'Api-Editor',
+        component: () => import('@/views/api-editor/index'),
+        meta: { title: 'editor', icon: 'star' }
+      },
     ]
   },
 

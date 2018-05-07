@@ -1,0 +1,33 @@
+
+- id: user
+  pid: null
+  name: 用户管理
+  children:
+    - id: add
+      pid: user
+      name: 增加
+    - id: find
+      pid: user
+      name: 查找
+    - id: del
+      pid: user
+      name: 删除
+    - id: update
+      pid: user
+      name: 修改
+- id: book
+  pid: null
+  name: 图书管理
+  children:
+    - id: add
+      pid: book
+      name: 增加
+    - id: find
+      pid: book
+      name: 查找
+    - id: del
+      pid: book
+      name: 删除
+    - id: update
+      pid: book
+      name: 修改

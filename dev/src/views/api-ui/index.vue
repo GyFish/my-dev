@@ -24,7 +24,8 @@ export default {
   mounted() {
     SwaggerUI({
       dom_id: '#ui',
-      url: "http://petstore.swagger.io/v2/swagger.json",
+      docExpansion: 'none',
+      url: "http://127.0.0.1:7001/public/user.yaml",
     })
   }
 }

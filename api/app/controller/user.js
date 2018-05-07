@@ -2,7 +2,7 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async login() {
-    this.ctx.body = 'hi, egg'
+    this.ctx.body = { "code": 20000, "data": { "token": "admin" } }
   }
 }
 

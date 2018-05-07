@@ -4,15 +4,23 @@ class ApiService {
 
   async addApi(api) {
     return request({
-      url: '/addApi',
+      url: '/api/addApi',
       method: 'POST'
     })
   }
 
-  async getApiLists() {
-    return request({
-      url: '/getApiLists',
-      method: 'GET'
+  async getApi(id) {
+    return await request({
+      method: 'GET',
+      url: '/api/getApi',
+      param: id
+    })
+  }
+
+  async getApiList() {
+    return await request({
+      method: 'GET',
+      url: '/api/getApiList',
     })
   }
   
