@@ -49,10 +49,11 @@ export default {
   },
 
   mounted() {
+    this.getQuery()
     SwaggerUI({
       dom_id: '#ui',
       docExpansion: 'none',
-      url: "http://127.0.0.1:7001/public/user.yaml",
+      url: "http://127.0.0.1:7001/public/api/user.find.yaml",
     })
   }
 

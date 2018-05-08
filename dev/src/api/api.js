@@ -12,8 +12,7 @@ class ApiService {
   async getApi(id) {
     return await request({
       method: 'GET',
-      url: '/api/getApi',
-      param: id
+      url: '/api/findOne?id=' + id,
     })
   }
 

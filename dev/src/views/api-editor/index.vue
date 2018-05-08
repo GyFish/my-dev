@@ -13,6 +13,7 @@
       class="el-icon-close" 
       type="danger" 
       size="mini"
+      @click="handleBack"
       circle>
     </el-button>
   </div>
@@ -33,6 +34,9 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/mode/javascript/javascript.js'
 // theme css
 import 'codemirror/theme/dracula.css'
+
+import ApiService from '@/api/api'
+const apiService = new ApiService()
 
 export default {
 
@@ -56,7 +60,19 @@ export default {
     }
   },
 
-  mounted() {
+  methods: {
+    
+    handleBack() {
+      this.$router.push('/api/table')
+    },
+
+  },
+
+  async mounted() {
+    let { id } = this.$route.query
+    let res = await apiService.getApi(id)
+    console.log(res.data.toString())
+    this.code = res.data.toString()
   }
 
 }

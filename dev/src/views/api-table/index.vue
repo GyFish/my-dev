@@ -153,7 +153,7 @@ export default {
     // 查看
     handleCat(row) {
       console.log(row)
-      const id = row.id + '.' + row.pid
+      const id = row.pid + '.' + row.id
       this.$router.push({
         path: '/api/ui',
         query: { id }
@@ -168,7 +168,7 @@ export default {
     // 修改
     handleEdit(row) {
       console.log(row)
-      const id = row.id + '.' + row.pid
+      const id = row.pid + '.' + row.id
       this.$router.push({
         path: '/api/editor',
         query: { id }
