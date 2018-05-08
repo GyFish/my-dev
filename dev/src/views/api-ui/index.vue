@@ -1,5 +1,17 @@
 <template>
-<div>
+<div class="app-container">
+
+  <!-- button group -->
+  <div class="bt-add-container">
+    <el-button 
+      class="el-icon-close" 
+      type="danger" 
+      @click="handleBack"
+      size="mini"
+      circle
+    >
+    </el-button>
+  </div>
 
   <div id="ui"></div>
 
@@ -20,7 +32,22 @@ import 'swagger-ui-themes/themes/3.X/theme-flattop.css'
  */
 
 export default {
+
   name: 'Api-UI',
+
+  methods: {
+
+    handleBack() {
+      this.$router.push('/api/table')
+    },
+
+    getQuery() {
+      console.log(this.$route.query)
+      return this.$route.query
+    },
+
+  },
+
   mounted() {
     SwaggerUI({
       dom_id: '#ui',
@@ -28,5 +55,13 @@ export default {
       url: "http://127.0.0.1:7001/public/user.yaml",
     })
   }
+
 }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+.bt-add-container {
+  margin-bottom: 10px;
+  text-align: right;
+}
+</style>

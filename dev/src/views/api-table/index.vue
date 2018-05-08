@@ -1,6 +1,18 @@
 <template>
   <div class="app-container">
 
+    <!-- 添加按钮 -->
+    <div class="bt-add-container">
+      <el-button
+        circle
+        icon="el-icon-plus"
+        type="primary"
+        size="mini"
+        @click="dialogVisible = true"
+      >
+      </el-button>
+    </div>
+
     <!-- 表格 -->
     <tree-table :data="list">
       <el-table-column label="id" prop="id"></el-table-column>
@@ -13,7 +25,8 @@
             icon="el-icon-search"
             size="mini"
             type="success"
-            @click="message(scope.row)"
+            @click="handleCat(scope.row)"
+            v-if="scope.row.pid"
           >
           </el-button>
           <el-button 
@@ -21,7 +34,8 @@
             icon="el-icon-edit"
             size="mini"
             type="primary"
-            @click="message(scope.row)"
+            @click="handleEdit(scope.row)"
+            v-if="scope.row.pid"
           >
           </el-button>
           <el-button 
@@ -29,23 +43,12 @@
             icon="el-icon-delete"
             size="mini"
             type="danger"
-            @click="message(scope.row)"
+            @click="handleDelete(scope.row)"
           >
           </el-button>
         </template>
       </el-table-column>
     </tree-table>
-
-    <!-- 添加按钮 -->
-    <div class="bt-add-container">
-      <el-button
-        icon="el-icon-circle-plus"
-        type="warning"
-        @click="dialogVisible = true"
-      >
-        添加
-      </el-button>
-    </div>
 
     <!-- 表单 -->
     <el-dialog
@@ -131,21 +134,47 @@ export default {
   },
 
   methods: {
-    message(row) {
-      this.$message.info(row.event)
-      this.$router.push('/home')
-    },
-    submitApi() {
 
+    message(row) {
+      this.$message.info(row.name)
+    },
+
+    // 创建
+    submitApi() {
       console.log('add api...')
       let api = JSON.stringify(this.apiModel)
-
       // 调用api
       apiService.addApi(api).then(res => {
         console.log(res)
         this.dialogVisible = false
       })
     },
+
+    // 查看
+    handleCat(row) {
+      console.log(row)
+      const id = row.id + '.' + row.pid
+      this.$router.push({
+        path: '/api/ui',
+        query: { id }
+      })
+    },
+
+    // 删除
+    handleDelete(row) {
+      console.log(row)
+    },
+
+    // 修改
+    handleEdit(row) {
+      console.log(row)
+      const id = row.id + '.' + row.pid
+      this.$router.push({
+        path: '/api/editor',
+        query: { id }
+      })
+    }
+
   },
 
   async mounted() {
@@ -159,7 +188,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .bt-add-container {
-  margin: 30px;
+  margin-bottom: 10px;
   text-align: right;
 }
 </style>

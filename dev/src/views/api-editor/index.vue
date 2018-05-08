@@ -1,6 +1,23 @@
 <template>
-<div>
+<div class="app-container">
 
+  <!-- button group -->
+  <div class="bt-add-container">
+    <el-button 
+      class="el-icon-check" 
+      type="primary" 
+      size="mini"
+      circle>
+    </el-button>
+    <el-button 
+      class="el-icon-close" 
+      type="danger" 
+      size="mini"
+      circle>
+    </el-button>
+  </div>
+
+  <!-- code main -->
   <codemirror v-model="code" :options="cmOptions"></codemirror>
 
 </div>
@@ -27,7 +44,7 @@ export default {
 
   data() {
     return {
-      code: 'const a = 10',
+      code: `const a = 'hello world!'`,
       cmOptions: {
         // codemirror options
         tabSize: 4,
@@ -44,3 +61,22 @@ export default {
 
 }
 </script>
+
+<style rel="stylesheet/scss" lang="scss" scoped>
+.bt-add-container {
+  margin-bottom: 10px;
+  text-align: right;
+}
+.vue-codemirror {
+  height: 400px;
+}
+.CodeMirror {
+    height: 400px;
+    border: 1px solid rgb(14, 13, 13);
+}
+.CodeMirror-scroll {
+    height: 400px;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+</style>
