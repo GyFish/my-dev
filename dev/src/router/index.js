@@ -58,23 +58,6 @@ export const constantRouterMap = [
     ]
   },
 
-  // wiki
-  {
-    path: 'wiki',
-    component: Layout,
-    alwaysShow: true,
-    name: 'wiki',
-    meta: { title: 'wiki', icon: 'message' },
-    children: [
-      {
-        path: 'table',
-        name: 'Api',
-        component: () => import('@/views/api-table/index'),
-        meta: { title: '外呼系统', icon: 'star' }
-      }
-    ]
-  },
-
   // ops
   {
     path: 'wiki',
@@ -106,6 +89,30 @@ export const constantRouterMap = [
         component: () => import('@/views/api-table/index'),
         meta: { title: '外呼系统', icon: 'star' }
       }
+    ]
+  },
+
+  // wiki
+  {
+    path: '/wiki',
+    component: Layout,
+    alwaysShow: false,
+    name: 'wiki',
+    meta: { title: 'wiki', icon: 'message' },
+    children: [
+      {
+        path: 'shelf',
+        name: 'Wiki-Shelf',
+        component: () => import('@/views/wiki-shelf/index'),
+        meta: { title: 'Wiki', icon: 'message' }
+      },
+      {
+        hidden: true,
+        path: 'book',
+        name: 'Wiki-Book',
+        component: () => import('@/views/wiki-book/index'),
+        meta: { title: 'editor', icon: 'star' }
+      },
     ]
   },
 
