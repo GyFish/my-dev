@@ -78,21 +78,16 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="scss">
+.CodeMirror {
+  font-family: 'Source Code Pro';
+  height: 700px;
+}
 .bt-add-container {
   margin-bottom: 10px;
   text-align: right;
 }
 .vue-codemirror {
   height: 400px;
-}
-.CodeMirror {
-    height: 400px;
-    border: 1px solid rgb(14, 13, 13);
-}
-.CodeMirror-scroll {
-    height: 400px;
-    overflow-y: hidden;
-    overflow-x: auto;
 }
 </style>

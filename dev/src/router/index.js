@@ -42,14 +42,14 @@ export const constantRouterMap = [
         meta: { title: '外呼系统', icon: 'star' }
       },
       {
-        hidden: false,
+        hidden: true,
         path: 'ui',
         name: 'Api-UI',
         component: () => import('@/views/api-ui/index'),
         meta: { title: 'ui', icon: 'star' }
       },
       {
-        hidden: false,
+        hidden: true,
         path: 'editor',
         name: 'Api-Editor',
         component: () => import('@/views/api-editor/index'),
