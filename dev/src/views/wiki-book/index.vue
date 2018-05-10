@@ -4,12 +4,6 @@
   <!-- button group -->
   <div class="bt-add-container">
     <el-button 
-      class="el-icon-check" 
-      type="primary" 
-      size="mini"
-      circle>
-    </el-button>
-    <el-button 
       class="el-icon-close" 
       type="danger" 
       size="mini"
@@ -20,7 +14,7 @@
   
   <iframe src="http://localhost:7001/public/wiki/_book/index.html" 
     frameborder="0"
-    height="600px"
+    height="900px"
     width="100%"
   ></iframe>
 </div>
@@ -42,9 +36,6 @@ export default {
 .bt-add-container {
   margin-bottom: 10px;
   text-align: right;
-}
-.vue-codemirror {
-  height: 400px;
 }
 </style>
 

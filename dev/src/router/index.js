@@ -32,7 +32,7 @@ export const constantRouterMap = [
     component: Layout,
     redirect: '/api/table',
     name: 'api',
-    meta: { title: '接口', icon: 'international' },
+    meta: { title: '接口', icon: 'example' },
     alwaysShow: true,
     children: [
       {
@@ -60,28 +60,12 @@ export const constantRouterMap = [
 
   // ops
   {
-    path: 'wiki',
+    path: 'ops',
     component: Layout,
     alwaysShow: true,
+    hidden: true,
     name: 'ops',
     meta: { title: '运维', icon: 'dashboard' },
-    children: [
-      {
-        path: 'table',
-        name: 'Api',
-        component: () => import('@/views/api-table/index'),
-        meta: { title: '外呼系统', icon: 'star' }
-      }
-    ]
-  },
-
-  // git
-  {
-    path: 'wiki',
-    component: Layout,
-    alwaysShow: true,
-    name: 'git',
-    meta: { title: 'git', icon: 'bug' },
     children: [
       {
         path: 'table',
@@ -113,6 +97,24 @@ export const constantRouterMap = [
         component: () => import('@/views/wiki-book/index'),
         meta: { title: 'editor', icon: 'star' }
       },
+    ]
+  },
+
+  // git
+  {
+    path: '/links',
+    component: Layout,
+    alwaysShow: false,
+    name: 'Links',
+    meta: { title: 'Links', icon: 'bug' },
+    redirect: '/gitlab/main',
+    children: [
+      {
+        path: 'main',
+        name: 'Links',
+        component: () => import('@/views/links/index'),
+        meta: { title: 'Links', icon: 'international' }
+      }
     ]
   },
 

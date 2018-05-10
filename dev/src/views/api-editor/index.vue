@@ -81,13 +81,10 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 .CodeMirror {
   font-family: 'Source Code Pro';
-  height: 700px;
+  height: 900px;
 }
 .bt-add-container {
   margin-bottom: 10px;
   text-align: right;
-}
-.vue-codemirror {
-  height: 400px;
 }
 </style>
