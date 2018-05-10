@@ -69,4 +69,4 @@ class ApiController extends Controller {
 
 }
 
-module.exports = ApiController;
+module.exports = ApiController

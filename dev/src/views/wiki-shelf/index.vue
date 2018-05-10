@@ -14,32 +14,63 @@
   </div>
 
   <!-- books shelf -->
-  <div>
+  <el-row>
+  <el-col :span="6" v-for="book of booList" :key="book.id">
+
     <el-card class="card">
       <div>
         <span>
-          纳尔的回旋镖
+          {{book.name}}
         </span>
       </div>
       <el-button 
         type="text" 
-        @click="handleRead"
+        @click="handleRead(book.id)"
       >
-        <img :src="demoBook" width="100%">
+        <img :src="book.cover" width="100%">
       </el-button>
       <div>
-        <el-button size="mini" type="primary" @click="handleRead">
+        <el-button size="mini" type="primary" @click="handleRead(book.id)">
           Read
         </el-button>
-        <el-button size="mini" type="success" @click="handleGet">
+        <el-button size="mini" type="success" @click="handleGet(book.id)">
           Get
         </el-button>
-        <el-button size="mini" type="warning" @click="handleBuild">
+        <el-button size="mini" type="warning" @click="handleBuild(book.id)">
           Build
         </el-button>
       </div>
     </el-card>
-  </div>
+
+  </el-col>
+  </el-row>
+  <!-- books shelf -->
+  <!-- <div class="card-container">
+    <el-card class="card" v-for="book of booList" :key="book.id">
+      <div>
+        <span>
+          {{book.name}}
+        </span>
+      </div>
+      <el-button 
+        type="text" 
+        @click="handleRead(book.id)"
+      >
+        <img :src="book.cover" width="100%">
+      </el-button>
+      <div>
+        <el-button size="mini" type="primary" @click="handleRead(book.id)">
+          Read
+        </el-button>
+        <el-button size="mini" type="success" @click="handleGet(book.id)">
+          Get
+        </el-button>
+        <el-button size="mini" type="warning" @click="handleBuild(book.id)">
+          Build
+        </el-button>
+      </div>
+    </el-card>
+  </div> -->
 
   <!-- 弹窗 -->
   <el-dialog
@@ -50,6 +81,15 @@
     <el-form :model="bookInfo">
       <el-form-item label="id">
         <el-input v-model="bookInfo.id"></el-input>
+      </el-form-item>
+      <el-form-item label="Name">
+        <el-input v-model="bookInfo.name"></el-input>
+      </el-form-item>
+      <el-form-item label="git地址">
+        <el-input v-model="bookInfo.git"></el-input>
+      </el-form-item>
+      <el-form-item label="封面地址">
+        <el-input v-model="bookInfo.cover"></el-input>
       </el-form-item>
     </el-form>
 
@@ -64,6 +104,9 @@
 
 <script>
 import demoBook from '@/assets/my/gnar.jpg'
+import WikiService from '@/api/wiki'
+
+const wikiService = new WikiService()
 
 export default {
 
@@ -74,14 +117,31 @@ export default {
       demoBook,
       dialogVisible: false,
       bookInfo: {
-        id: ''
-      }
+        id: '',
+        name: '',
+        git: '',
+        cover: ''
+      },
+      booList: [{
+        id: 'demo',
+        name: '纳尔的回旋镖',
+        git: '',
+        cover: 'http://wanzao2.b0.upaiyun.com/1462088534127league_of_legends___gnarrr_by_ffsade-d7vyvqz.png'
+      }]
     }
   },
 
   methods: {
+    async getBookList() {
+      this.booList = await wikiService.getBookList()
+    },
     handleAdd() {
       this.dialogVisible = true
+    },
+    async addBook() {
+      await wikiService.addBook(this.bookInfo)
+      await this.getBookList()
+      this.dialogVisible = false
     },
     handleRead() {
       this.$router.push('/wiki/book')
@@ -92,10 +152,12 @@ export default {
     handleBuild() {
       this.$message.info('run gitbook build')
     },
-    addBook() {
-      this.$message.info('1.mkdir\n2.gitbook init\n3.git init')
-    }
+  },
+
+  mounted() {
+    this.getBookList()
   }
+
 };
 </script>
 
@@ -108,6 +170,10 @@ export default {
   width: 300px;
   height: 380px;
   text-align: center;
+  margin: 10px;
+}
+.card-container {
+  display: flex
 }
 </style>
 

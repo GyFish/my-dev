@@ -12,23 +12,33 @@
     </el-button>
   </div>
   
-  <iframe src="http://localhost:7001/public/wiki/_book/index.html" 
+  <!-- gitbook -->
+  <iframe :src="bookUrl" 
     frameborder="0"
     height="900px"
     width="100%"
   ></iframe>
+
 </div>
 </template>
 
 <script>
 export default {
+
   name: "Wiki-Book",
+
+  data() {
+    return {
+      bookUrl: 'http://localhost:7001/public/wiki/demo/_book/index.html'
+    }
+  },
 
   methods: {
     handleBack() {
       this.$router.push('/wiki/shelf')
     }
   }
+  
 }
 </script>
 
