@@ -17,6 +17,22 @@ class WikiService {
     })
     return res.data.data
   }
+
+  async buildBook(id) {
+    let res = await request({
+      method: 'PUT',
+      url: `/wiki/${id}/buildBook`,
+    })
+    return res.data.data
+  }
+
+  async deleteBook(id) {
+    let res = await request({
+      method: 'DELETE',
+      url: `/wiki/${id}/deleteBook`,
+    })
+    return res.data.data
+  }
   
 }
 

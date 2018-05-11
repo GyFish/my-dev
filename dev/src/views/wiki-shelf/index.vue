@@ -15,7 +15,7 @@
 
   <!-- books shelf -->
   <el-row>
-  <el-col :span="6" v-for="book of booList" :key="book.id">
+  <el-col :span="8" v-for="book of booList" :key="book.id">
 
     <el-card class="card">
       <div>
@@ -27,50 +27,22 @@
         type="text" 
         @click="handleRead(book.id)"
       >
-        <img :src="book.cover" width="100%">
+        <img :src="book.cover" height="256px">
       </el-button>
       <div>
-        <el-button size="mini" type="primary" @click="handleRead(book.id)">
-          Read
+        <el-button round size="mini" type="primary" icon="el-icon-zoom-in" @click="handleRead(book.id)">
         </el-button>
-        <el-button size="mini" type="success" @click="handleGet(book.id)">
-          Get
+        <el-button round size="mini" type="success" icon="el-icon-edit" @click="handleGet(book.git)">
         </el-button>
-        <el-button size="mini" type="warning" @click="handleBuild(book.id)">
-          Build
+        <el-button round size="mini" type="danger" icon="el-icon-delete" @click="deleteBook(book.id)">
+        </el-button>
+        <el-button round size="mini" type="warning" icon="el-icon-refresh" @click="handleBuild(book.id)">
         </el-button>
       </div>
     </el-card>
 
   </el-col>
   </el-row>
-  <!-- books shelf -->
-  <!-- <div class="card-container">
-    <el-card class="card" v-for="book of booList" :key="book.id">
-      <div>
-        <span>
-          {{book.name}}
-        </span>
-      </div>
-      <el-button 
-        type="text" 
-        @click="handleRead(book.id)"
-      >
-        <img :src="book.cover" width="100%">
-      </el-button>
-      <div>
-        <el-button size="mini" type="primary" @click="handleRead(book.id)">
-          Read
-        </el-button>
-        <el-button size="mini" type="success" @click="handleGet(book.id)">
-          Get
-        </el-button>
-        <el-button size="mini" type="warning" @click="handleBuild(book.id)">
-          Build
-        </el-button>
-      </div>
-    </el-card>
-  </div> -->
 
   <!-- 弹窗 -->
   <el-dialog
@@ -143,14 +115,19 @@ export default {
       await this.getBookList()
       this.dialogVisible = false
     },
-    handleRead() {
-      this.$router.push('/wiki/book')
+    handleRead(id) {
+      console.log('read id =', id)
+      this.$router.push(`/wiki/book?id=${id}`)
     },
-    handleGet() {
-      this.$message.info('http://gnar.git')
+    handleGet(git) {
+      this.$message.info(git)
     },
-    handleBuild() {
-      this.$message.info('run gitbook build')
+    async handleBuild(id) {
+      this.$message.info(await wikiService.buildBook(id))
+    },
+    async deleteBook(id) {
+      this.$message.info(await wikiService.deleteBook(id))
+      await this.getBookList()
     },
   },
 

@@ -21,5 +21,7 @@ module.exports = app => {
   // wiki
   router.get('/wiki/getBookList', controller.wiki.getBookList)
   router.post('/wiki/addBook', controller.wiki.addBook)
+  router.put('/wiki/:id/buildBook', controller.wiki.buildBook)
+  router.delete('/wiki/:id/deleteBook', controller.wiki.deleteBook)
   
 };

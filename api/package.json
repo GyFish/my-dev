@@ -7,7 +7,8 @@
     "egg": "^2.2.1",
     "egg-cors": "^2.0.0",
     "egg-scripts": "^2.5.0",
-    "js-yaml": "^3.11.0"
+    "js-yaml": "^3.11.0",
+    "node-cmd": "^3.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",

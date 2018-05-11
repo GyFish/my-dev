@@ -37,6 +37,12 @@ export default {
     handleBack() {
       this.$router.push('/wiki/shelf')
     }
+  },
+
+  mounted() {
+    const {query} = this.$route
+    if (query)
+      this.bookUrl = `http://localhost:7001/public/wiki/${query.id}/_book/index.html`
   }
   
 }
