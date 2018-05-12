@@ -1,9 +1,9 @@
-- id: we
-  name: we
-  git: 'http://172.23.161.57:9099/dc-web/wiki.git'
-  cover: >-
-    https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1314858569,168171647&fm=27&gp=0.jpg
 - id: demo
   name: Gnar
   git: ''
-  cover: 'http://wanzao2.b0.upaiyun.com/1462088534127league_of_legends___gnarrr_by_ffsade-d7vyvqz.png'
+  cover: >-
+    http://wanzao2.b0.upaiyun.com/1462088534127league_of_legends___gnarrr_by_ffsade-d7vyvqz.png
+- id: geyu
+  name: geyu
+  git: 'https://github.com/GyFish/my-book.git'
+  cover: 'https://avatars2.githubusercontent.com/u/22474872?s=460&v=4'

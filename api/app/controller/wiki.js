@@ -65,17 +65,15 @@ class WikiController extends BaseController {
     let { id } = this.ctx.params
     let dir = `${this.basePath}/${id}`
 
-    console.log(id)
+    console.log(this.index)
     // 从 index 中移除
     for (let i = this.index.length - 1; i >= 0; i--) {
       let book = this.index[i]
-      if (id == book.id)
+      if (id == book.id) {
         this.index.splice(book, 1)
-      console.log(this.index)
+      }
     }
-    console.log(111111111111111)
-    console.log(this.index)
-    // fs.writeFileSync(this.indexPath, yaml.dump(this.index), 'utf8')
+    fs.writeFileSync(this.indexPath, yaml.dump(this.index), 'utf8')
 
     // 从硬盘删除
 
