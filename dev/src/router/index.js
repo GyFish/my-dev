@@ -90,8 +90,17 @@ export const constantRouterMap = [
         component: () => import('@/views/wiki-shelf/index'),
         meta: { title: 'Wiki', icon: 'message' }
       },
+    ]
+  },
+  {
+    path: '/wiki',
+    component: Layout,
+    alwaysShow: false,
+    hidden: true,
+    name: 'wiki',
+    meta: { title: 'wiki', icon: 'message' },
+    children: [
       {
-        hidden: true,
         path: 'book',
         name: 'Wiki-Book',
         component: () => import('@/views/wiki-book/index'),
