@@ -127,6 +127,24 @@ export const constantRouterMap = [
     ]
   },
 
+  // LightFlow
+  {
+    path: '/flow',
+    component: Layout,
+    alwaysShow: false,
+    name: 'LightFlow',
+    meta: { title: 'LightFlow', icon: 'drag' },
+    redirect: '/flow/main',
+    children: [
+      {
+        path: 'main',
+        name: 'LightFlow',
+        component: () => import('@/views/flow/index'),
+        meta: { title: 'LightFlow', icon: 'drag' }
+      }
+    ]
+  },
+
   // git
   {
     path: '/links',
