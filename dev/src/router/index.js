@@ -109,6 +109,24 @@ export const constantRouterMap = [
     ]
   },
 
+  // auth
+  {
+    path: '/auth',
+    component: Layout,
+    alwaysShow: false,
+    name: 'Auth',
+    meta: { title: 'Auth', icon: 'lock' },
+    redirect: '/auth/main',
+    children: [
+      {
+        path: 'main',
+        name: 'Auth',
+        component: () => import('@/views/auth/index'),
+        meta: { title: 'Auth', icon: 'lock' }
+      }
+    ]
+  },
+
   // git
   {
     path: '/links',
