@@ -1,25 +1,46 @@
 <template>
-<div>
+<div class="app-container">
 
-  <h1>it's a demo</h1>
+  <h1>it's a flow in stack</h1>
 
   <el-row>
-    <el-col :span="12">
-      <div class="container" v-dragula="colOne" drake="first">
-        <div class="item" v-for="text in colOne" :key="text">
-          <el-button class="btn">
-            {{text}}
-          </el-button>
+    <el-col :span="6">
+      <div ref="left" class="left container">
+        <h2>Frames</h2>
+        <div v-for="(item, index) of base" :key="index">
+          <el-button>{{item}}</el-button>
         </div>
       </div>
     </el-col>
-    <el-col :span="12">
-      <div class="container" v-dragula="colTwo" drake="first">
-        <div class="item" v-for="text in colTwo" :key="text">
-          <el-button class="btn">
-            {{text}}
-          </el-button>
-        </div>
+    <el-col :span="6">
+      <div ref="right" class="container">
+        <h2>Stack</h2>
+      </div>
+    </el-col>
+    <el-col :span="6">
+      <div class="container">
+        <h2>Deal</h2>
+        <el-form>
+            <el-input placeholder="名称"></el-input>
+            <el-select placeholder="类型">
+            </el-select>
+            <el-select placeholder="处理人">
+            </el-select>
+            <el-select placeholder="提交至">
+            </el-select>
+            <el-select placeholder="流转至">
+            </el-select>
+            <el-select placeholder="驳回至">
+            </el-select>
+            <el-select placeholder="是否暂存">
+            </el-select>
+        </el-form>
+      </div>
+    </el-col>
+    <el-col :span="6">
+      <div class="container">
+        <h2>Data</h2>
+        {{this.base}}
       </div>
     </el-col>
   </el-row>
@@ -28,54 +49,94 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { Vue2Dragula } from 'vue2-dragula'
+import Dragula from 'dragula'
 import 'dragula/dist/dragula.css'
 
-Vue.use(Vue2Dragula, {
-  logging: {
-    service: true // to only log methods in service (DragulaService)
-  }
-});
+// dragula 实例
+let drake = {}
 
 export default {
   
-  name: 'LightFlow',
+  name: 'flowStack',
 
   data() {
     return {
-      colOne: [
+      // 可选帧
+      base: [
+        '开始',
         '填写',
         '审核',
         '结束',
       ],
-      colTwo: [
-        '开始'
+      // 流程栈
+      stack: [
+
       ],
+      // 帧
+      frame: {
+        name: '',
+        type: '',
+        handler: '',
+        commitFlag: true,
+        stashFlag: true,
+        flowFlag: true,
+        regectFlag: true,
+      }
+    }
+  },
+
+  methods: {
+    nodeDeal(item) {
+      console.log('node deal...')
+      console.log(item)
     }
   },
 
   created () {
-    const service = Vue.$dragula.$service
-    service.options('my-drake', {
-      direction: 'vertical'
+  },
+
+  mounted() {
+
+    console.log('mounted...')
+
+    drake = Dragula([
+        this.$refs.left, 
+        this.$refs.right,
+      ], {
+      direction: 'horizontal',
+      copy(el, source) {
+        return source.className.startsWith('left')
+      },
+      accepts(el, source) {
+        return !source.className.startsWith('left')
+      },
+      removeOnSpill() {
+        return !source.className.startsWith('left')
+      },
+      moves(el, source, handle, sibling) {
+
+        if (source.className.startsWith('left'))
+          return true
+          
+        console.log('moves...')
+        return true
+      }
     })
+
   }
 }
 </script>
 
 <style scoped>
-.wrapper {
-  /* background-color: antiquewhite; */
-  padding: 10%;
-}
 .container {
-  margin-top: 5%;
-  background-color: aquamarine;
+  height: 600px;
+  width: 90%;
+  padding: 2%;
+  background-color: beige;
   text-align: center;
-  padding: 1%;
 }
-.btn {
-  width: 100%;
+.el-button, .el-input, .el-select {
+  width: 95%;
+  margin-top: 2%;
 }
 </style>

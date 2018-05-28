@@ -53,6 +53,16 @@
         </el-button>
       </div>
     </el-card>
+    <el-card class="card">
+      <div>
+        <el-button 
+          type="text" 
+          @click="this.window.open('https://github.com/bevacqua/dragula')"
+        >
+          <img src="https://github.com/bevacqua/dragula/raw/master/resources/logo.png">
+        </el-button>
+      </div>
+    </el-card>
   </div>
   
 </div>

@@ -7,3 +7,8 @@
   name: geyu
   git: 'https://github.com/GyFish/my-book.git'
   cover: 'https://avatars2.githubusercontent.com/u/22474872?s=460&v=4'
+- id: netty
+  name: Netty
+  git: 'https://github.com/waylau/essential-netty-in-action.git'
+  cover: >-
+    https://github.com/waylau/essential-netty-in-action/raw/master/images/netty-in-action-logo.jpg

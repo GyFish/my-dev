@@ -127,20 +127,20 @@ export const constantRouterMap = [
     ]
   },
 
-  // LightFlow
+  // FlowStack
   {
     path: '/flow',
     component: Layout,
     alwaysShow: false,
-    name: 'LightFlow',
-    meta: { title: 'LightFlow', icon: 'drag' },
+    name: 'FlowStack',
+    meta: { title: 'FlowStack', icon: 'drag' },
     redirect: '/flow/main',
     children: [
       {
         path: 'main',
-        name: 'LightFlow',
+        name: 'FlowStack',
         component: () => import('@/views/flow/index'),
-        meta: { title: 'LightFlow', icon: 'drag' }
+        meta: { title: 'FlowStack', icon: 'drag' }
       }
     ]
   },
