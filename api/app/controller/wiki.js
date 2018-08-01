@@ -55,7 +55,7 @@ class WikiController extends BaseController {
 
     // 初始化 gitbook
     let build = await cmd.run(`cd ${dir} && gitbook build`)
-    console.log(build)
+    this.ctx.logger.info(`cd ${dir} && gitbook build`)
 
     this.success('build ok!')
   }

@@ -20,7 +20,8 @@
 
 <script>
 import SwaggerUI from 'swagger-ui'
-import 'swagger-ui-themes/themes/3.X/theme-flattop.css'
+import 'swagger-ui/dist/swagger-ui.css'
+// import 'swagger-ui-themes/themes/3.X/theme-flattop.css'
 /**
   theme-feeling-blue
   theme-flattop

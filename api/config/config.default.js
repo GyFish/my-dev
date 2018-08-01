@@ -17,6 +17,9 @@ module.exports = appInfo => {
       enable: false
     }, 
     // domainWhiteList: ['http://127.0.0.1:7001'],
+    xframe: {
+      enable: false
+    }
   }
 
   config.cors = {
