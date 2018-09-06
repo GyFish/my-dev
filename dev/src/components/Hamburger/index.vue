@@ -15,7 +15,7 @@ export default {
   props: {
     isActive: {
       type: Boolean,
-      default: false
+      default: true
     },
     toggleClick: {
       type: Function,

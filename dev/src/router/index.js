@@ -34,27 +34,14 @@ export const constantRouterMap = [
     name: 'api',
     meta: { title: '接口', icon: 'example' },
     alwaysShow: true,
+    hidden: true,
     children: [
       {
         path: 'table',
         name: 'Api',
         component: () => import('@/views/api-table/index'),
         meta: { title: '外呼系统', icon: 'star' }
-      },
-      {
-        hidden: true,
-        path: 'ui',
-        name: 'Api-UI',
-        component: () => import('@/views/api-ui/index'),
-        meta: { title: 'ui', icon: 'star' }
-      },
-      {
-        hidden: true,
-        path: 'editor',
-        name: 'Api-Editor',
-        component: () => import('@/views/api-editor/index'),
-        meta: { title: 'editor', icon: 'star' }
-      },
+      }
     ]
   },
 
@@ -177,6 +164,24 @@ export const constantRouterMap = [
         name: 'Util',
         component: () => import('@/views/util/index'),
         meta: { title: 'Util', icon: 'zip' }
+      }
+    ]
+  },
+
+  // iframe
+  {
+    path: '/iframe',
+    component: Layout,
+    alwaysShow: false,
+    name: 'iFrameDemo',
+    meta: { title: 'iFrameDemo', icon: 'lock' },
+    redirect: '/iframe/demo',
+    children: [
+      {
+        path: 'demo',
+        name: 'iFrameDemo',
+        component: () => import('@/views/iframe/index'),
+        meta: { title: 'iFrameDemo', icon: 'money' }
       }
     ]
   },
