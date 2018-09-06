@@ -163,6 +163,24 @@ export const constantRouterMap = [
     ]
   },
 
+  // util
+  {
+    path: '/util',
+    component: Layout,
+    alwaysShow: false,
+    name: 'Util',
+    meta: { title: 'Util', icon: 'lock' },
+    redirect: '/util/index',
+    children: [
+      {
+        path: 'index',
+        name: 'Util',
+        component: () => import('@/views/util/index'),
+        meta: { title: 'Util', icon: 'zip' }
+      }
+    ]
+  },
+
   { path: '*', redirect: '/404', hidden: true }
 ]
 
